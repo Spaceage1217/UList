@@ -1,14 +1,22 @@
 import React from 'react';
-import {StyleSheet,Text,View,TouchableOpacity,Button} from 'react-native';
+import {StyleSheet,Text,View,TouchableOpacity,Button,StatusBar} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CameraScreen from "./camera";
 export default class CaptureAndList extends React.Component{
 
     static navigationOptions = ({navigation}) =>{
         return {
-            header: null,
             headerBackTitle: 'Cancel',
-            headerBackImage: null,
+            headerTitle: 'U-List',
+            headerTitleStyle:{
+                color: 'white'
+            },
+            headerTintColor: 'white',
+            headerStyle:{
+                backgroundColor:'#2C2D32',
+                shadowColor: 'transparent',
+                borderBottomWidth: 0,
+            },
         }
     };
 
@@ -17,6 +25,9 @@ export default class CaptureAndList extends React.Component{
         const {navigate} = this.props.navigation;
         return (
             <View style={container}>
+                <StatusBar
+                    barStyle="light-content"
+                />
                 <TouchableOpacity onPress={() => navigate('CameraScreen')}>
                     <Ionicons style={{
                         color: 'white',

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet,Text,View,TouchableOpacity,Image,Button} from 'react-native';
+import {StyleSheet,Text,View,TouchableOpacity,Button,StatusBar} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Camera, Permissions } from 'expo';
 import {RenderPreview} from './renderPreview';
@@ -8,10 +8,18 @@ export default class CameraScreen extends React.Component{
 
     static navigationOptions = ({navigation}) => {
         return {
+            headerTitle: 'Camera',
             headerStyle:{
-                backgroundColor:'#2C2D32',
-                borderColor:'#2C2D32'
+                backgroundColor:'black',
+                shadowColor: 'transparent',
+                borderBottomWidth: 0,
+                height: 65
             },
+            headerTitleStyle:{
+                color: 'white'
+            },
+            headerTintColor: 'white',
+
             headerRight: (
                 <Button
                     //the function that returns null on the onPress is just to get rid of warning.
@@ -68,6 +76,9 @@ export default class CameraScreen extends React.Component{
         } else {
             return (
                 <View style={{ flex: 1 }}>
+                    <StatusBar
+                        barStyle="light-content"
+                    />
                     <Camera style={{ flex: 1 }} type={this.state.type} ref={ref => { this.camera = ref; }}>
                         <View
                             style={{
@@ -76,7 +87,14 @@ export default class CameraScreen extends React.Component{
                                 flexDirection: 'row',
                             }}>
                         </View>
-                        {RenderPreview(this.state.imagePreview)}
+                        <View style={{top: '-5%'}}>
+                            {RenderPreview(this.state.imagePreview,
+                                {   width: 50,
+                                    height: 50,
+                                    borderColor:'white'
+                                }
+                            )}
+                        </View>
                         <View style={container}>
                             <TouchableOpacity
                                 style={{
