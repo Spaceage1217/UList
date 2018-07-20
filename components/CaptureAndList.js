@@ -1,7 +1,10 @@
 import React from 'react';
 import {StyleSheet,Text,View,TouchableOpacity,Button,StatusBar} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+// NOT WORKING NEED TO CHECK WHY import {connect} from 'react-redux';
+// import {bindActionCreators,mapStateToProps} from 'redux';
 import CameraScreen from "./camera";
+
 export default class CaptureAndList extends React.Component{
 
     static navigationOptions = ({navigation}) =>{
