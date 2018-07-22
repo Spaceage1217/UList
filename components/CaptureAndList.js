@@ -1,11 +1,12 @@
 import React from 'react';
 import {StyleSheet,Text,View,TouchableOpacity,Button,StatusBar} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-// NOT WORKING NEED TO CHECK WHY import {connect} from 'react-redux';
-// import {bindActionCreators,mapStateToProps} from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {testAction} from '../redux/actions';
 import CameraScreen from "./camera";
 
-export default class CaptureAndList extends React.Component{
+class CaptureAndList extends React.Component{
 
     static navigationOptions = ({navigation}) =>{
         return {
@@ -54,3 +55,21 @@ const styles = StyleSheet.create({
         color: 'white'
     }
 });
+
+function mapStateToProps(state) {
+    return {
+        globalState: state
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        testAction,
+        //stuffActions: bindActionCreators(stuffActions, dispatch)
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CaptureAndList);

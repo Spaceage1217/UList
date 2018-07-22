@@ -5,10 +5,11 @@ export const ActionType = {
 export const testAction = ()=> (
     {
         type: ActionType.test,
-        payload: {
-            request: {
-                url: `/users/${user}/repos`
-            }
-        }
+        payload: 'REDUX TEST WORKS'
+        // payload: {
+        //     request: {
+        //         url: `/users/${user}/repos`
+        //     }
+        // }
     }
 );
